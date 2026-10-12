@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>简洁有效 · v3.2 修改与重测 + Skill 蓝图 + Agent对比</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;color:#1e293b;background:#f4f6fa;line-height:1.8;font-size:15px}
+.wrap{max-width:860px;margin:0 auto;padding:26px 20px 60px}
+header{background:linear-gradient(135deg,#1e1b4b,#4f46e5);color:#fff;border-radius:14px;padding:22px 28px;margin-bottom:16px}
+header h1{font-size:20px;margin-bottom:4px} header p{opacity:.9;font-size:13px}
+section{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;margin-bottom:14px}
+h2{font-size:16px;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+th{background:#f8fafc;text-align:left;padding:6px 8px;border:1px solid #e2e8f0}
+td{padding:6px 8px;border:1px solid #e2e8f0;vertical-align:top}
+.good{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:9px;padding:10px 16px;font-size:13.5px}
+.bad{background:#fef2f2;border:1px solid #fecaca;border-radius:9px;padding:10px 16px;font-size:13.5px}
+figure{margin:12px 0;border:1px solid #e2e8f0;border-radius:10px;padding:8px;background:#fafbfe}
+figcaption{font-size:11.5px;color:#64748b;text-align:center}
+footer{text-align:center;color:#64748b;font-size:11.5px;margin-top:18px}
+svg text{font-family:system-ui,"Microsoft YaHei",sans-serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header><h1>v3.2 · 简洁有效：认错、堵漏、重测 + 蓝图 + Agent 对比</h1>
+<p>正文实测 1601 字（宣称 1050，自报再次失准，以脚本为准） ｜ 2026-10-02</p></header>
+
+<section>
+<h2>一、认错与修改</h2>
+<p><b>漏洞</b>：output-spec 只限产物（600 字），给自己留了「对话不受限」的豁免——于是每条回复三四百字带大表格，你被迫反复说「简化」。</p>
+<p><b>v3.2 已写入 output-spec.md §9（对话输出纪律）</b>：① 回复 ≤5 句或 ≤150 字，首句给结论；② 一次只给一个主链接；③ 对话表格 ≤4 行 ×3 列；④ 写完数句数，超了就删；⑤ 用户明确要详述时不设上限，仍结论先行。</p>
+</section>
+
+<section>
+<h2>二、完全重测（两个方向）</h2>
+<table>
+<tr><th style="width:24%">测试</th><th>结果</th></tr>
+<tr><td>A · 自查历史回复</td><td>取近期 5 条最终回复（近似统计）：均值 <b>~320 字</b>，超标率 <b>5/5</b>；几乎每条带大表格——违规率 100%，新纪律确有必要</td></tr>
+<tr><td>B · 子 agent 压缩对照</td><td>同一内容两写法：<b>663 字（官样体）→ 97 字（3 句）</b>，压缩 85%，59s/44k tokens。子 agent 总结病因：「删掉的全是过程性描述和修饰性表态」——与我的病灶完全一致</td></tr>
+</table>
+<div class="good"><b>97 字新版示范（可直接当汇报模板）</b>：求职助手系统 6 组回归测试全部通过，系统具备上线条件。静态完整性 26 项、行业数据库、论文查证 3 篇、对练 2 轮、机器验收均达标，盲评 9/10。测试中发现字数超限、工具超时 2 个问题，均已修复并通过复测。</div>
+</section>
+
+<section>
+<h2>三、Skill 总体设计蓝图（v3.2 现状）</h2>
+<figure>
+<svg viewBox="0 0 820 330" width="100%">
+  <g font-size="11" font-weight="700">
+    <rect x="20" y="12" width="780" height="34" rx="8" fill="#eef2ff" stroke="#c7d2fe"/><text x="410" y="34" text-anchor="middle" fill="#4338ca">L0 哲学：能力优先 · 反浮躁 · 人机协同 · 链路定位 · 双线对照｜写给人看，交给机器查</text>
+    <rect x="20" y="52" width="780" height="34" rx="8" fill="#fef2f2" stroke="#fecaca"/><text x="410" y="74" text-anchor="middle" fill="#b91c1c">L1 硬规则 R1–R9：否决状态机 · 技术配额 2/3 · 证据链 · 双库隔离 · 诚实红线</text>
+    <rect x="20" y="92" width="780" height="34" rx="8" fill="#fff7ed" stroke="#fed7aa"/><text x="410" y="114" text-anchor="middle" fill="#c2410c">L2 流程：Stage 0（企业+行业库v2）→ 预演 → 对练 → 材料攻防 → 全流程 loop → 反思记忆</text>
+    <rect x="20" y="132" width="780" height="34" rx="8" fill="#faf5ff" stroke="#ddd6fe"/><text x="410" y="154" text-anchor="middle" fill="#7c3aed">L3 知识（references×6）：角色卡 · 评分锚点 · 选题规则 · 岗位匹配 · 行业数据库 · 输出规范</text>
+    <rect x="20" y="172" width="780" height="34" rx="8" fill="#f0fdfa" stroke="#99f6e4"/><text x="410" y="194" text-anchor="middle" fill="#0f766e">L4 数据：企业库 [C/I-xx] ⇄ 个人库 [P-xx]（只读 join，永不互写）+ learning-log</text>
+    <rect x="20" y="212" width="780" height="34" rx="8" fill="#eff6ff" stroke="#bfdbfe"/><text x="410" y="234" text-anchor="middle" fill="#1d4ed8">L5 输出：五段式 HTML（600 字上限）+ 对话简洁纪律（v3.2：≤5 句/150 字）</text>
+    <rect x="20" y="252" width="780" height="34" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/><text x="410" y="274" text-anchor="middle" fill="#15803d">L6 验收：机器五查（结构/字数/来源/内容/截图）+ 子 Agent 四规矩（配额/复验/护栏/换方案）</text>
+  </g>
+  <g fill="#4f46e5"><circle r="3.5"><animateMotion dur="2.6s" repeatCount="indefinite" path="M410,48 L410,50"/></circle><circle r="3.5"><animateMotion dur="2.6s" begin=".4s" repeatCount="indefinite" path="M410,88 L410,90"/></circle><circle r="3.5"><animateMotion dur="2.6s" begin=".8s" repeatCount="indefinite" path="M410,128 L410,130"/></circle><circle r="3.5"><animateMotion dur="2.6s" begin="1.2s" repeatCount="indefinite" path="M410,168 L410,170"/></circle><circle r="3.5"><animateMotion dur="2.6s" begin="1.6s" repeatCount="indefinite" path="M410,208 L410,210"/></circle><circle r="3.5"><animateMotion dur="2.6s" begin="2s" repeatCount="indefinite" path="M410,248 L410,250"/></circle></g>
+  <text x="410" y="308" text-anchor="middle" font-size="10.5" fill="#475569">动点=一次运行的调用顺序：哲学定调 → 规则约束 → 流程执行 → 知识按需加载 → 数据落库 → 输出受限 → 机器验收</text>
+</svg>
+<figcaption>七层蓝图：每层只依赖下一层，修改互不穿透（改 L5 不动 L1）。</figcaption>
+</figure>
+</section>
+
+<section>
+<h2>四、Agent 开发 vs Skill 设计：区别与联系</h2>
+<table>
+<tr><th style="width:16%">维度</th><th style="width:40%">Skill（本 skill 这类）</th><th>Agent 开发（如 ZCode、工作流系统）</th></tr>
+<tr><td>本质</td><td><b>提示词工程制品</b>：markdown 指令包 + 知识文件，教模型「怎么做」</td><td><b>软件系统</b>：感知→决策→行动→记忆的常驻循环，自动执行</td></tr>
+<tr><td>状态</td><td>无状态——靠每轮重述状态表（R5）对抗漂移</td><td>有状态——会话、数据库、检查点原生持久</td></tr>
+<tr><td>可靠性</td><td>指令遵循 + 人审 + 脚本验收兜底</td><td>工程保障：单元测试、重试、监控、回滚</td></tr>
+<tr><td>演进</td><td>改文本即生效，零部署</td><td>改代码→构建→部署，版本管理</td></tr>
+<tr><td>关系</td><td colspan="2"><b>Skill 是 Agent 的技能注入，Agent 是 Skill 的执行引擎。</b>本 skill 的 R7 条件增强层就是桥：运行时支持子 Agent 派发时，单 agent 指令包自动升级为多 agent 编排（盲评独立子 agent）。本会话即实例：tech-interview-skill 跑在 ZCode agent 上。</td></tr>
+</table>
+<div class="good"><b>一句话</b>：Skill 回答「怎么做才对」（程序性知识），Agent 回答「自动把它做完」（自主执行）；Skill 的上限被 Agent 运行时能力封顶，Agent 的下限被 Skill 质量托底。</div>
+</section>
+
+<section>
+<h2>五、下一步（v3.3 候选，按 ROI 排）</h2>
+<p style="font-size:14px">① 反思卡跨会话自动聚合（现在靠手动）；② 行业库定时刷新（分维周期已有规则，无自动触发）；③ 对话简洁纪律加入每次终审自检项（本轮起人工执行，下轮脚本化）。</p>
+</section>
+
+<footer>v3.2 · 2026-10-02 · 修改已写入 output-spec.md §9 · 测试 A/B 数据见第二节 · 本页含蓝图动图×1、正文实测 1601 字</footer>
+
+</div>
+</body>
+</html>

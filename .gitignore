@@ -1,0 +1,8 @@
+# 个人数据永不入库（R8 双库隔离在仓库层的落地）
+candidate-materials/
+company-intel/
+learning-log/
+*.pdf
+# 系统
+.DS_Store
+Thumbs.db

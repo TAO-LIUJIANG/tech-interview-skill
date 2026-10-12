@@ -1,10 +1,10 @@
-# Anti-Hype Technical Interview Prep Skill
+# Tech Industry Job-Search Skill
 
 **English** | [中文](README.md)
 
 ![license](https://img.shields.io/badge/license-MIT-green)
 
-> **Written for humans, verified by machines** — give it your resume and a target company; get back an industry map, a gap list, interview scripts, and a mock interviewer.
+> Give it your resume and a target company; get back an industry map, a gap list, interview scripts, and a mock interviewer.
 
 ## What it does
 

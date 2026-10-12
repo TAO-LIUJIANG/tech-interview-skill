@@ -1,9 +1,9 @@
-# 反浮躁技术面试备战 Skill
+# 科技行业求职 Skill
 
 [English](README-en.md) | **中文**
 
 ![stars](https://img.shields.io/badge/stars-0-yellow) ![forks](https://img.shields.io/badge/forks-0-yellow) ![license](https://img.shields.io/badge/license-MIT-green) 
-> **写给人看，交给机器查** —— 给简历和目标公司，还你行业地图、差距清单、面试话术和陪练。
+> 给简历和目标公司，还你行业地图、差距清单、面试话术和陪练。
 
 **目录**：[News](#news) · [快速开始](#快速开始) · [适合谁](#它适合谁) · [设计哲学](#设计哲学) · [特点](#本-skill-的特点) · [使用流程](#使用流程) · [功能亮点](#功能亮点) · [好答案 vs 差答案](#好答案-vs-差答案同一道题独立盲评) · [FAQ](#faq) · [架构](#skill-架构)
 

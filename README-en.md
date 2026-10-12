@@ -1,4 +1,4 @@
-# Tech Industry Job-Search Skill
+# Tech Industry Interview Skill
 
 **English** | [中文](README.md)
 

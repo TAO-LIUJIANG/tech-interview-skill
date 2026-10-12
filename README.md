@@ -1,4 +1,4 @@
-# 科技行业求职 Skill
+# 科技行业面试 Skill
 
 [English](README-en.md) | **中文**
 
